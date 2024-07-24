@@ -1,0 +1,2 @@
+# awsplugin
+Salesforce aws plugin
