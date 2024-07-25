@@ -28,7 +28,7 @@ jobs:
              -Dsonar.projectKey=awsplugin \
              -Dsonar.projectName='awsplugin' \
              -Dsonar.host.url=http://hivemet.com:9000 \
-             -Dsonar.token=sqp_eb8f5668ecc51152e7e355945b73efc952ae35e5
+             -Dsonar.token=${{ secrets.AWSPLUGIN_KEY }}
           
 
    
