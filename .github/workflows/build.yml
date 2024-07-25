@@ -25,8 +25,8 @@ jobs:
     - name: Code Coverage Stage
       run: |
            mvn clean verify sonar:sonar \
-             -Dsonar.projectKey=awsplugin \
-             -Dsonar.projectName='awsplugin' \
+             -Dsonar.projectKey=sander \
+             -Dsonar.projectName='sander' \
              -Dsonar.host.url=http://hivemet.com:9000 \
              -Dsonar.token=${{ secrets.AWSPLUGIN_KEY }}
           
