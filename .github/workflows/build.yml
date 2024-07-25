@@ -11,16 +11,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK 17
+    - name: Build tool setup Stage
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
         
-    - name: Build the application with Maven
+    - name: Application build Stage
       run: |
            mvn clean install
-           ls target
+
+    - name: Code Coverage Stage
+      run: |
+           mvn clean verify sonar:sonar \
+             -Dsonar.projectKey=awsplugin \
+             -Dsonar.projectName='awsplugin' \
+             -Dsonar.host.url=http://hivemet.com:9000 \
+             -Dsonar.token=sqp_eb8f5668ecc51152e7e355945b73efc952ae35e5
+          
 
    
