@@ -19,14 +19,3 @@ jobs:
     - name: Application build Stage
       run: |
            mvn clean install
-
-    - name: Code Coverage Stage
-      run: |
-           mvn clean verify sonar:sonar \
-             -Dsonar.projectKey=sander \
-             -Dsonar.projectName='sander' \
-             -Dsonar.host.url=http://hivemet.com:9000 \
-             -Dsonar.token=${{ secrets.AWSPLUGIN_KEY }}
-          
-
-   
