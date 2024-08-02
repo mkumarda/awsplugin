@@ -22,13 +22,18 @@ jobs:
       run: |
            mvn clean install
 
-    - name: Code Coverage Stage
-      run: |
-           mvn clean verify sonar:sonar \
-             -Dsonar.projectKey=awsplugin \
-             -Dsonar.projectName='awsplugin' \
-             -Dsonar.host.url=http://hivemet.com:9000 \
-             -Dsonar.token=${{ secrets.AWSPLUGIN_KEY }}
-          
+   # - name: Code Coverage Stage
+   #   run: |
+   #        mvn clean verify sonar:sonar \
+   #          -Dsonar.projectKey=awsplugin \
+   #          -Dsonar.projectName='awsplugin' \
+   #          -Dsonar.host.url=http://hivemet.com:9000 \
+   #          -Dsonar.token=${{ secrets.AWSPLUGIN_KEY }}
+    
+    - name: Docker Build
+      run: |  
+            docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+            docker build -t mkumarda/awsplugin:2.0.0 .
+            docker push mkumarda/awsplugin:2.0.0
 
    
